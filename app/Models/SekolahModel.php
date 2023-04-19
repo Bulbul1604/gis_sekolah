@@ -10,7 +10,7 @@ class SekolahModel extends Model
     protected $primaryKey       = 'sek_npsn';
     protected $returnType       = 'object';
     protected $allowedFields    = [
-        'sek_npsn', 'user_id', 'sek_nama', 'sek_status', 'sek_jenjang', 'sek_alamat', 'kel_id', 'kec_id', 'sek_foto', 'sek_lokasi',
+        'sek_npsn', 'user_id', 'sek_nama', 'sek_status', 'sek_jenjang', 'sek_alamat', 'kel_id', 'kec_id', 'sek_lokasi',
     ];
 
     public function getDetailSekolah()

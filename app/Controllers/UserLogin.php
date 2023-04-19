@@ -3,15 +3,17 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\SekolahModel;
 use App\Models\User;
 
 class UserLogin extends BaseController
 {
-    protected $user;
+    protected $user, $sekolah;
     protected $helpers = ['form'];
     public function __construct()
     {
         $this->user = new User();
+        $this->sekolah = new SekolahModel();
     }
     public function index()
     {
@@ -85,6 +87,13 @@ class UserLogin extends BaseController
     }
     public function delete($id)
     {
+        $user = $this->user->where('user_id', $id)->first();
+        if ($user->user_akses == "sekolah") {
+            $sekolah = $this->sekolah->where('user_id', $user->user_id)->first();
+            $this->sekolah->update($sekolah->sek_npsn, [
+                'user_id' => NULL,
+            ]);
+        }
         $this->user->delete($id);
         session()->setFlashdata('message', 'Data login berhasil dihapus');
         return redirect()->to('/user');

@@ -50,7 +50,6 @@ class Sekolah extends BaseController
     }
     public function save()
     {
-        $sekolah_foto = $this->request->getFile('sek_foto');
         $validation = $this->validate([
             'sek_npsn' => [
                 'rules'  => 'required|is_unique[sekolah.sek_npsn]',
@@ -72,9 +71,6 @@ class Sekolah extends BaseController
             ],
             'kec_id' => [
                 'rules'  => 'required',
-            ],
-            'sek_foto' => [
-                'rules' => 'mime_in[sek_foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[sek_foto,2048]',
             ],
             'sek_lokasi' => [
                 'rules'  => 'required',
@@ -98,12 +94,6 @@ class Sekolah extends BaseController
         if (!$validation) {
             return redirect()->to('/sekolah/create')->withInput();
         }
-        if ($sekolah_foto->getError() == 4) {
-            $fileName = 'default.jpg';
-        } else {
-            $fileName = $sekolah_foto->getRandomName();
-            $sekolah_foto->move('assets/images/sekolah/', $fileName);
-        }
         if ($this->request->getVar('user_id') != "NULL") {
             $user_id = $this->request->getVar('user_id');
         } else {
@@ -118,7 +108,6 @@ class Sekolah extends BaseController
             'sek_alamat' => strtolower($this->request->getVar('sek_alamat')),
             'kel_id' => $this->request->getPost('kel_id'),
             'kec_id' => $this->request->getPost('kec_id'),
-            'sek_foto'   => $fileName,
             'sek_lokasi' => $this->request->getPost('sek_lokasi'),
         ]);
         $this->detail_sekolah->insert([
@@ -165,9 +154,6 @@ class Sekolah extends BaseController
             'kec_id' => [
                 'rules'  => 'required',
             ],
-            'sek_foto' => [
-                'rules' => 'mime_in[sek_foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[sek_foto,2048]',
-            ],
             'sek_lokasi' => [
                 'rules'  => 'required',
             ],
@@ -190,14 +176,6 @@ class Sekolah extends BaseController
         if (!$validation) {
             return redirect()->to('/sekolah/edit/' . $id)->withInput();
         }
-        $sekolah_foto = $this->request->getFile('sek_foto');
-        if ($sekolah_foto->getError() == 4) {
-            $fileName = $this->request->getVar('sek_fotoLama');
-        } else {
-            $fileName = $sekolah_foto->getRandomName();
-            $sekolah_foto->move('assets/images/sekolah/', $fileName);
-            unlink('assets/images/sekolah/' . $this->request->getVar('sek_fotoLama'));
-        }
         $idDetailSekolah = $this->request->getVar('det_id');
         if ($this->request->getVar('user_id') != "NULL") {
             $user_id = $this->request->getVar('user_id');
@@ -213,7 +191,6 @@ class Sekolah extends BaseController
             'sek_alamat' => strtolower($this->request->getVar('sek_alamat')),
             'kel_id' => $this->request->getPost('kel_id'),
             'kec_id' => $this->request->getPost('kec_id'),
-            'sek_foto'   => $fileName,
             'sek_lokasi' => $this->request->getPost('sek_lokasi'),
         ]);
         $this->detail_sekolah->update($idDetailSekolah, [

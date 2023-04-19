@@ -12,7 +12,6 @@
             <div class="card-body">
                 <form method="POST" action="<?= base_url('sekolah/update/' . $sekolah->sek_npsn) ?>" enctype="multipart/form-data">
                     <?= csrf_field() ?>
-                    <input type="hidden" class="form-control" name="sek_fotoLama" value="<?= $sekolah->sek_foto ?>">
                     <input type="hidden" class="form-control" name="det_id" value="<?= $det_sekolah->det_id ?>">
                     <div class="form-group">
                         <label>Nomor Pokok Sekolah Nasional (NPSN)</label>
@@ -99,18 +98,6 @@
                         </select>
                         <div class="invalid-feedback">
                             <?= validation_show_error('kel_id'); ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="d-flex flex-column">
-                            <label>Foto Sekolah</label>
-                            <a href="<?= base_url('assets/images/sekolah/' . $sekolah->sek_foto); ?>" class="mb-3" target="_blank" rel="noopener noreferrer">
-                                <img src="<?= base_url('assets/images/sekolah/' . $sekolah->sek_foto); ?>" width="300px">
-                            </a>
-                        </div>
-                        <input type="file" class="form-control <?= (validation_show_error('sek_foto')) ? 'is-invalid' : ''; ?>" id="sek_foto" name="sek_foto" autofocus>
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('sek_foto'); ?>
                         </div>
                     </div>
                     <div class="form-group">

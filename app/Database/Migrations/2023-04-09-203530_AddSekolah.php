@@ -46,10 +46,6 @@ class AddSekolah extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'sek_foto'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '100',
-            ],
             'sek_lokasi' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '100',

@@ -48,7 +48,7 @@
         <div class="container">
             <div class="card box-shadow-xl overflow-hidden mb-5">
                 <div class="row">
-                    <div class="col-lg-5 position-relative" style="background-image: url('../assets/images/sekolah/1681264826_6546c23fb99d36776a91.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;" loading="lazy">
+                    <div class="col-lg-5 position-relative" loading="lazy">
                         <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
                             <div class="mask bg-gradient-primary opacity-8"></div>
                             <div class="p-5 ps-sm-8 position-relative text-start my-auto z-index-2">

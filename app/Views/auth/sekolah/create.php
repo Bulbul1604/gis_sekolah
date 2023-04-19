@@ -97,13 +97,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Foto Sekolah</label>
-                        <input type="file" class="form-control <?= (validation_show_error('sek_foto')) ? 'is-invalid' : ''; ?>" id="sek_foto" required name="sek_foto" autofocus value="<?= old('sek_foto'); ?>">
-                        <div class="invalid-feedback">
-                            <?= validation_show_error('sek_foto'); ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label>Lokasi Sekolah</label>
                         <input type="text" class="form-control <?= (validation_show_error('sek_lokasi')) ? 'is-invalid' : ''; ?>" id="sek_lokasi" required placeholder="0.1103241,117.4823823" name="sek_lokasi" autofocus value="<?= old('sek_lokasi'); ?>">
                         <div class="invalid-feedback">
