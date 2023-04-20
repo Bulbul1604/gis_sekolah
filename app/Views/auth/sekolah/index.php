@@ -80,7 +80,7 @@
     $(document).ready(function() {
         $('#data_sekolah').DataTable({
             order: [
-                [2, 'desc']
+                [1, 'asc']
             ],
         });
     });
