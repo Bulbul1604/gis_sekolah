@@ -78,7 +78,11 @@
 <?= $this->section('script') ?>
 <script>
     $(document).ready(function() {
-        $('#data_sekolah').DataTable();
+        $('#data_sekolah').DataTable({
+            order: [
+                [2, 'desc']
+            ],
+        });
     });
 </script>
 <?= $this->endSection() ?>
